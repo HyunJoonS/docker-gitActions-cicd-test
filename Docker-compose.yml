@@ -1,0 +1,13 @@
+version: '3'
+services:
+  lulla-nft-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: shinhyunjoon/lulla-nft:dev
+    ports:
+      - "8080:9090"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9090"]
+      interval: 10s
+      timeout: 5s
